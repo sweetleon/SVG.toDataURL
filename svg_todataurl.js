@@ -147,7 +147,7 @@ SVGElement.prototype.toDataURL = function(type, options) {
 	function exportImageCanvg(type) {
 		var canvas = document.createElement("canvas");
 		var ctx = canvas.getContext('2d');
-		var svg_xml = XMLSerialize(_svg);
+		//var svg_xml = XMLSerialize(_svg);
 
 		// NOTE: canvg gets the SVG element dimensions incorrectly if not specified as attributes
 		//debug("detected svg dimensions " + [_svg.clientWidth, _svg.clientHeight])
@@ -157,7 +157,7 @@ SVGElement.prototype.toDataURL = function(type, options) {
 		if (keepBB) var bb = _svg.getBBox();
 
 		// NOTE: this canvg call is synchronous and blocks
-		canvg(canvas, svg_xml, { 
+		canvg(canvas, _svg, {
 			ignoreMouse: true, ignoreAnimation: true,
 			offsetX: keepBB ? -bb.x : undefined, 
 			offsetY: keepBB ? -bb.y : undefined,

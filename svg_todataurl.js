@@ -96,6 +96,7 @@ SVGElement.prototype.toDataURL = function(type, options) {
 	function base64dataURLencode(s) {
 		var b64 = "data:image/svg+xml;base64,";
 
+        s = unescape(encodeURIComponent(s));
 		// https://developer.mozilla.org/en/DOM/window.btoa
 		if (window.btoa) {
 			debug("using window.btoa for base64 encoding");
@@ -104,7 +105,7 @@ SVGElement.prototype.toDataURL = function(type, options) {
 			debug("using custom base64 encoder");
 			b64 += Base64.encode(s);
 		}
-		
+
 		return b64;
 	}
 
